@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    long long int n,i,ch[100][2]={0},f=0,p=0,cnt=0;
+    cin>>n;
+    for(i=0;i<n;i++)
+        cin>>ch[i][0];
+        if(ch[0][0]==1)
+        {
+            cnt++;
+            ch[0][1]=1;
+        }
+    for(i=1;i<=n;i++)
+    {
+        if(ch[i][0]==1)
+        {
+            if(ch[i-1][1]==0)
+                {
+                    cnt++;
+                    ch[i][1]=1;
+                }
+        }
+        if(ch[i][0]==3)
+        {
+            if(ch[i-1][1]==1)
+                continue;
+            if(ch[i-1][1]==0)
+            {
+                cnt++;
+                ch[i][1]=1;
+            }
+            if(ch[i-1][0]==2)
+            {
+                cnt++;
+                ch[i][1]=1;
+            }
+            if(ch[i-1][0]==3)
+            {
+                cnt++;
+                ch[i][1]=1;
+            }
+        }
+    }
+    cout<<cnt;
+}

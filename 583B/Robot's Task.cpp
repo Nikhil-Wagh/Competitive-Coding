@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int i,cnt=0,n,a[1000][2]={0},dr=0;
+    cin>>n;
+    for(i=0;i<n;i++)
+    {
+        cin>>a[i][0];
+    }
+    i=0;
+    while(cnt!=n)
+    {
+        if(i==n)
+        {
+            dr++;i--;continue;
+        }
+        if(i==-1)
+        {
+            dr++;i++;continue;
+        }
+        if(dr%2==0)
+        {
+            if(cnt>=a[i][0]&&a[i][1]==0)
+            {
+                cnt++;
+                a[i][1]=1;
+            }
+            i++;
+        }
+        else
+        {
+            if(cnt>=a[i][0]&&a[i][1]==0)
+            {
+                cnt++;
+                a[i][1]=1;
+            }
+            i--;
+        }
+    }
+    cout<<dr;
+}

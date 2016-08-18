@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1469452307 source:g:\codeblocks\books\books.cpp
+	<iostream>
+	<cstring>
+	<stdio.h>
+	<stdlib.h>
+

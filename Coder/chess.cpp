@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int i,j,n,cnt=0;
+    cin>>n;
+    if(n%2==0)
+        cout<<(n*n/2);
+    else
+        cout<<(((n+1)/2)+(n*(n/2)));
+    cout<<endl;
+    for(i=0;i<n;i++)
+    {
+        if(i%2==0)
+        {
+            for(j=0;j<n;j++)
+            {
+                if(j%2==0)
+                    {
+                        cout<<"C";
+                    }
+                else
+                    cout<<".";
+            }
+        }
+        else
+        {
+             for(j=0;j<n;j++)
+            {
+                if(j%2==0)
+                    cout<<".";
+                else
+                   {
+                       cout<<"C";
+                   }
+            }
+        }
+        cout<<endl;
+    }
+}

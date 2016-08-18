@@ -1,0 +1,106 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n,cnt=0,i,j=0;
+    char a[103][103];
+    cin>>n;
+    for(i=0;i<n;i++)
+        for(j=0;j<n;j++)
+            cin>>a[i][j];
+    for(i=0;i<n;i++)
+    {
+       for(j=0;j<n;j++)
+        if(a[i][j]=='x')
+        {
+            if(i==0)
+            {
+                if(i==j)
+                {
+                    if(a[i+1][j]=='o')
+                        cnt++;
+                    if(a[i][j+1]=='o')
+                        cnt++;
+                }
+                else if(j==n-1)
+                {
+                    if(a[i][j-1]=='o')
+                        cnt++;
+                    if(a[i+1][j]=='o')
+                        cnt++;
+                }
+                else
+                {
+                    if(a[i][j-1]=='o')
+                        cnt++;
+                    if(a[i][j+1]=='o')
+                        cnt++;
+                    if(a[i+1][j]=='o')
+                        cnt++;
+                }
+            }
+            else if(i!=n-1)
+            {
+                if(j!=0||j!=n-1)
+                {
+                    if(a[i+1][j]=='o')
+                        cnt++;
+                    if(a[i-1][j]=='o')
+                        cnt++;
+                    if(a[i][j+1]=='o')
+                        cnt++;
+                    if(a[i][j-1]=='o')
+                        cnt++;
+                }
+                else if(j==0)
+                {
+                    if(a[i+1][j]=='o')
+                        cnt++;
+                    if(a[i-1][j]=='o')
+                        cnt++;
+                    if(a[i][j+1]=='0')
+                        cnt++;
+                }
+                else
+                {
+                    if(a[i-1][j]=='o')
+                        cnt++;
+                    if(a[i+1][j]=='0')
+                        cnt++;
+                    if(a[i][j-1]=='o')
+                        cnt++;
+                }
+            }
+            else
+            {
+                if(j==0)
+                {
+                    if(a[i-1][j]=='o')
+                        cnt++;
+                    if(a[i+1][j]=='o')
+                        cnt++;
+                }
+                else if(j!=n)
+                {
+                    if(a[i-1][j]=='o')
+                        cnt++;
+                    if(a[i+1][j]=='o')
+                        cnt++;
+                    if(a[i][j-1]=='o')
+                        cnt++;
+                }
+                else
+                {
+                    if(a[i-1][j]='o')
+                        cnt++;
+                    if(a[i][j-1]=='o')
+                        cnt++;
+                }
+            }
+        }
+    }
+    if(cnt%2==0)
+        cout<<"YES";
+    else
+        cout<<"NO";
+}

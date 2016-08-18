@@ -1,0 +1,1 @@
+Here are the solutions of some questions available on the internet,(it is recommended that you solve the problem yourself first instead of coping the code) for improving your coding skills.
