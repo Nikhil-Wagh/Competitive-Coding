@@ -14,43 +14,26 @@ typedef pair<int,int> ii;
 #define total(c) allocator(all(c),ll(0))
 typedef pair<int,int> ii;
 typedef pair<ii,int> pii;
+map <LL,LL > mp;
 LL ma=-1,mi=1000000000000000;
 inline LL gcd(LL a, LL b) {return b?gcd(b, a%b):a;}
 inline LL lcm(LL a, LL b, LL MOD) {return a/gcd(a,b) * b % MOD;}
+LL power(LL x, unsigned int y)
+{
+    if( y == 0)
+        return 1;
+    else if (y%2 == 0)
+        return power(x, y/2)*power(x, y/2);
+    else
+        return x*power(x, y/2)*power(x, y/2);
+
+}
 int main()
 {
-    LL i,j,n,ans=0,b,d=0,sum=0,x,y;
-    cin>>n;
-    bool flag=false;
-    LL a[600][600];
-   // clock_t tStart = clock();
-    /* Do your stuff here */
-    for(i=0;i<n;i++)
-    {
-        for(j=0;j<n;j++)
-            {
-                cin>>a[i][j];
-                if(a[i][j]==0)
-                {
-                    x=i;y=j;
-                }
-            }
-    }
-    for(i=0,j=0;i<n;i++)
-    {
-        if(i!=x&&j!=y)
-            d+=a[i][j];
-        for(j=0;j<n;j++)
-        {
-            if(i!=x&&j!=y)
-                sum+=a[i][j];
-        }
-        if(sum>0)
-            break;
-    }
+    ios::sync_with_stdio(0); cin.tie(0);
 
-    //printf("Time taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
+    LL i,j,n,ans=0,b,d=0,sum=0;
+
     return 0;
 }
-
 

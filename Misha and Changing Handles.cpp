@@ -14,43 +14,44 @@ typedef pair<int,int> ii;
 #define total(c) allocator(all(c),ll(0))
 typedef pair<int,int> ii;
 typedef pair<ii,int> pii;
-LL ma=-1,mi=1000000000000000;
+LL ma=-1,mi=1000000000000000,cnt=0;
 inline LL gcd(LL a, LL b) {return b?gcd(b, a%b):a;}
 inline LL lcm(LL a, LL b, LL MOD) {return a/gcd(a,b) * b % MOD;}
+map <string ,string> m;
+string dsu(string a)
+{
+    map <string , string> :: iterator it;
+    it = m.find(a);
+    if(it!=m.end())
+    {
+        a=it->second;
+        m.erase(it);
+        dsu(a);
+    }
+    return a;
+}
 int main()
 {
-    LL i,j,n,ans=0,b,d=0,sum=0,x,y;
+    LL i,j,n,ans=0,d=0,sum=0;
     cin>>n;
-    bool flag=false;
-    LL a[600][600];
-   // clock_t tStart = clock();
+    clock_t tStart = clock();
     /* Do your stuff here */
+    string a,b;
     for(i=0;i<n;i++)
     {
-        for(j=0;j<n;j++)
-            {
-                cin>>a[i][j];
-                if(a[i][j]==0)
-                {
-                    x=i;y=j;
-                }
-            }
+        cin>>a>>b;
+        m[a]=b;
     }
-    for(i=0,j=0;i<n;i++)
+    for(map <string ,string> :: iterator it= m.begin();it!=m.end();it++)
     {
-        if(i!=x&&j!=y)
-            d+=a[i][j];
-        for(j=0;j<n;j++)
-        {
-            if(i!=x&&j!=y)
-                sum+=a[i][j];
-        }
-        if(sum>0)
-            break;
+        it->second=(dsu(it->second));
     }
-
-    //printf("Time taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
+    cout<<m.size()<<endl;
+    for(map <string ,string> :: iterator it=m.begin();it!=m.end();it++)
+    {
+        cout<<it->first<<" "<<it->second<<endl;
+    }
+   printf("Time taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
     return 0;
 }
-
 

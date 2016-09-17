@@ -14,43 +14,60 @@ typedef pair<int,int> ii;
 #define total(c) allocator(all(c),ll(0))
 typedef pair<int,int> ii;
 typedef pair<ii,int> pii;
+LL MOD =1000000009;
 LL ma=-1,mi=1000000000000000;
 inline LL gcd(LL a, LL b) {return b?gcd(b, a%b):a;}
 inline LL lcm(LL a, LL b, LL MOD) {return a/gcd(a,b) * b % MOD;}
 int main()
 {
-    LL i,j,n,ans=0,b,d=0,sum=0,x,y;
-    cin>>n;
-    bool flag=false;
-    LL a[600][600];
-   // clock_t tStart = clock();
+    LL i,j,n,ans=0,a[100009]={0},b,d=0,sum=0,m,g;
+    LL x[110]={0},y[110]={0};
+    //clock_t tStart = clock();
     /* Do your stuff here */
-    for(i=0;i<n;i++)
+    cin>>n>>m;
+    sum=n*m;
+    cin>>b;
+    for(i=0;i<b;i++)
     {
-        for(j=0;j<n;j++)
-            {
-                cin>>a[i][j];
-                if(a[i][j]==0)
-                {
-                    x=i;y=j;
-                }
-            }
+        cin>>d;
+        x[d]++;
     }
-    for(i=0,j=0;i<n;i++)
+    cin>>g;
+    for(i=0;i<g;i++)
     {
-        if(i!=x&&j!=y)
-            d+=a[i][j];
-        for(j=0;j<n;j++)
+        cin>>d;
+        y[d]++;
+    }
+    for(i=0;i<sum*(max(m,n));i++)
+    {
+        if(i!=0&&(x[i%n]!=0)||(y[i%m]!=0))
+      {
+            x[i%n]++;
+            y[i%m]++;
+      }
+      else if((x[i%n]!=0)||(y[i%m]!=0))
+       {
+            x[0]++;
+            y[0]++;
+       }
+    }
+    for(i=0;i<n;i++)
+        cout<<x[i]<<" ";
+    cout<<endl;
+    for(i=0;i<m;i++)
+        cout<<y[i]<<" ";
+    cout<<endl;
+    for(i=0;i<max(n,m);i++)
+    {
+        if(x[i%n]==0||y[i%m]==0)
         {
-            if(i!=x&&j!=y)
-                sum+=a[i][j];
+            cout<<"No"<<endl;
+            return 0;
         }
-        if(sum>0)
-            break;
     }
 
+    cout<<"Yes"<<endl;
     //printf("Time taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
     return 0;
 }
-
 

@@ -19,38 +19,46 @@ inline LL gcd(LL a, LL b) {return b?gcd(b, a%b):a;}
 inline LL lcm(LL a, LL b, LL MOD) {return a/gcd(a,b) * b % MOD;}
 int main()
 {
-    LL i,j,n,ans=0,b,d=0,sum=0,x,y;
-    cin>>n;
-    bool flag=false;
-    LL a[600][600];
-   // clock_t tStart = clock();
+    LL i,j,n,ans=0,a[100009]={0},b,d=0,sum=0;
+    string s;
+    clock_t tStart = clock();
     /* Do your stuff here */
-    for(i=0;i<n;i++)
+    cin>>s;
+    j=s.length();
+    for(i=0;i<j;i++)
     {
-        for(j=0;j<n;j++)
-            {
-                cin>>a[i][j];
-                if(a[i][j]==0)
-                {
-                    x=i;y=j;
-                }
-            }
-    }
-    for(i=0,j=0;i<n;i++)
-    {
-        if(i!=x&&j!=y)
-            d+=a[i][j];
-        for(j=0;j<n;j++)
+        if((s[i]-'0')%2==0)
         {
-            if(i!=x&&j!=y)
-                sum+=a[i][j];
+            ans++;
+            if(s[i]<s[j-1])
+            {
+                swap(s[i],s[j-1]);
+                 cout<<s<<endl;
+                return 0;
+            }
         }
-        if(sum>0)
-            break;
     }
-
-    //printf("Time taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
+    if(ans==0)
+    {
+        cout<<-1<<endl;
+        return 0;
+    }
+    else
+    {
+       for(i=j-1;i>=0;i--)
+    {
+        if((s[i]-'0')%2==0)
+        {
+            ans++;
+            if(s[i]>s[j-1])
+            {
+                swap(s[i],s[j-1]);
+                cout<<s<<endl;
+                return 0;
+            }
+        }
+    }
+    }
+   printf("Time taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
     return 0;
 }
-
-

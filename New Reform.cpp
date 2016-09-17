@@ -14,42 +14,49 @@ typedef pair<int,int> ii;
 #define total(c) allocator(all(c),ll(0))
 typedef pair<int,int> ii;
 typedef pair<ii,int> pii;
+typedef list <LL>  Li;
 LL ma=-1,mi=1000000000000000;
 inline LL gcd(LL a, LL b) {return b?gcd(b, a%b):a;}
 inline LL lcm(LL a, LL b, LL MOD) {return a/gcd(a,b) * b % MOD;}
+Li li[100009];
+bool flag=false;
+LL visited[100009];
+void dfs(LL x,LL parent)
+{
+    visited[x]=1;
+    for(Li :: iterator it=li[x].begin();it!=li[x].end();it++)
+    {
+        if(visited[*it]==0)
+        {
+            dfs(*it,x);
+        }
+        else if(*it!=parent)
+        {
+            flag=true;
+        }
+    }
+}
 int main()
 {
-    LL i,j,n,ans=0,b,d=0,sum=0,x,y;
-    cin>>n;
-    bool flag=false;
-    LL a[600][600];
-   // clock_t tStart = clock();
-    /* Do your stuff here */
-    for(i=0;i<n;i++)
+    LL i,j,n,m,ans=0,a[100009]={0},b,d=0,sum=0;
+    cin>>n>>m;
+    while(m--)
     {
-        for(j=0;j<n;j++)
-            {
-                cin>>a[i][j];
-                if(a[i][j]==0)
-                {
-                    x=i;y=j;
-                }
-            }
+        cin>>i>>j;
+        li[i].pb(j);
+        li[j].pb(i);
     }
-    for(i=0,j=0;i<n;i++)
+    for(i=1;i<=n;i++)
     {
-        if(i!=x&&j!=y)
-            d+=a[i][j];
-        for(j=0;j<n;j++)
+        if(visited[i]==0)
         {
-            if(i!=x&&j!=y)
-                sum+=a[i][j];
+            flag=false;
+            dfs(i,0);
+            if(flag==false)
+                ans++;
         }
-        if(sum>0)
-            break;
     }
-
-    //printf("Time taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
+    cout<<ans<<endl;
     return 0;
 }
 

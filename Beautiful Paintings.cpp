@@ -19,37 +19,21 @@ inline LL gcd(LL a, LL b) {return b?gcd(b, a%b):a;}
 inline LL lcm(LL a, LL b, LL MOD) {return a/gcd(a,b) * b % MOD;}
 int main()
 {
-    LL i,j,n,ans=0,b,d=0,sum=0,x,y;
+    LL i,j,n,ans=0,a[100009]={0},b,d=0,sum=0;
+    map <LL,LL> mp;
     cin>>n;
-    bool flag=false;
-    LL a[600][600];
-   // clock_t tStart = clock();
-    /* Do your stuff here */
     for(i=0;i<n;i++)
     {
-        for(j=0;j<n;j++)
-            {
-                cin>>a[i][j];
-                if(a[i][j]==0)
-                {
-                    x=i;y=j;
-                }
-            }
+        cin>>b;
+        mp[b]++;
     }
-    for(i=0,j=0;i<n;i++)
+    map <LL,LL> :: iterator it,ti;
+    unsigned si=mp.size();
+    for(it=mp.begin(),i=0,ti=(it++);i<si-1;i++,it++)
     {
-        if(i!=x&&j!=y)
-            d+=a[i][j];
-        for(j=0;j<n;j++)
-        {
-            if(i!=x&&j!=y)
-                sum+=a[i][j];
-        }
-        if(sum>0)
-            break;
+        sum += min(*it,*ti);
     }
-
-    //printf("Time taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
+    cout<<sum<<endl;
     return 0;
 }
 
