@@ -30,19 +30,20 @@ LL power(LL x, unsigned int y)
 }
 int main()
 {
-    ios::sync_with_stdio(0); cin.tie(0);
+    ios::sync_with_stdio(0); cin.tie(0);cout.tie(NULL);
 
-    LL n,ans=0,b,d=0,sum=0,x,i,j;
-    cin>>i>>j;
-    d=max(i,j);
-    b=min(i,j);
-    ans=b*(d+1);
-    cout<<ans<<endl;
-
+    LL i,j,n,ans=0,b,d=0,sum=0,a,r;
+    cin>>a>>b>>r;
+    n=((a-(2*r))/(sqrt(3)*r))+1;
+    d=b-(b/(2*r))*(2*r);//cout<<d<<endl;
+    if(d>=r)
+        ans=0;
+    else
+        ans=1;
+    sum=n*(b/(2*r))-((n/2)*ans);
+    //cout<<sum<<endl;
+    cout<<max(sum,(a/(2*r))*(b/(2*r)))<<endl;
     return 0;
 }
-
-
-
 
 

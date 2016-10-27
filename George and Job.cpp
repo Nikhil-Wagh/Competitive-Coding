@@ -1,3 +1,5 @@
+
+
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long int LL;
@@ -14,7 +16,6 @@ typedef pair<int,int> ii;
 #define total(c) allocator(all(c),ll(0))
 typedef pair<int,int> ii;
 typedef pair<ii,int> pii;
-map <LL,LL > mp;
 LL ma=-1,mi=1000000000000000;
 inline LL gcd(LL a, LL b) {return b?gcd(b, a%b):a;}
 inline LL lcm(LL a, LL b, LL MOD) {return a/gcd(a,b) * b % MOD;}
@@ -26,23 +27,46 @@ LL power(LL x, unsigned int y)
         return power(x, y/2)*power(x, y/2);
     else
         return x*power(x, y/2)*power(x, y/2);
-
 }
+int a[10000000],b[1000000];
 int main()
 {
-    ios::sync_with_stdio(0); cin.tie(0);
+    /*freopen("input.txt","r",stdin);
+    freopen("output.txt","w",stdout);*/
+	ios_base::sync_with_stdio(0);cin.tie(NULL);cout.tie(NULL);
 
-    LL n,ans=0,b,d=0,sum=0,x,i,j;
-    cin>>i>>j;
-    d=max(i,j);
-    b=min(i,j);
-    ans=b*(d+1);
-    cout<<ans<<endl;
+	LL i,j,k,flag,n,m,c=0,d=0,e[30]={0},x=0,t,temp=0,count;
+    cin>>n>>m>>k;
+    for(i=1,j=1;i<=n;i++)
+    {
+        cin>>a[i];
+        if(i<m)
+            b[i]=b[i-1]+a[i];
+        else
+            b[i]=b[i-1]+a[i]-a[i-m];
+    }
+    for(i=0;i<=n;i++)
+        cout<<setw(3)<<a[i]<<" ";
+        cout<<endl;
 
-    return 0;
+    for(i=0;i<=n;i++)
+        cout<<setw(3)<<b[i]<<" ";
+        cout<<endl;
+
+    sort(b,b+n+1,greater<LL>());
+
+     for(i=0;i<=n;i++)
+        cout<<setw(3)<<b[i]<<" ";
+        cout<<endl;
+    for(i=0;i<k;i++)
+        c+=b[i];
+    cout<<c<<endl;
 }
 
 
+/*
 
+20 5 3
+96 46 67 36 59 95 88 43 92 58 1 31 69 35 36 77 56 27 3 23
 
-
+*/
